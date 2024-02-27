@@ -46,14 +46,15 @@ def processing(img, gray, filename):
     return df, avg, N
 
 
-def graphics(filename, PS, avg, N):
+def graphics(filename, df, avg, N):
+    df = df.sort_values(Config.columns[0], ascending=False)
     fig, ax = plt.subplots(nrows=1, ncols=1)
-    plt.xlabel("№ of area")
+    plt.xlabel("Area")
     plt.ylabel("Perimeter/Area")
     plt.title(filename)
-    ax.plot(PS)
+    ax.plot(df[Config.columns[0]].to_list(),df[Config.columns[2]].to_list())
     # ax.scatter(PS)
-    ax.plot((0, len(PS)), (avg, avg), label=f"average %.2f 1/px" % avg)
+    ax.plot((0, max(df[Config.columns[0]])), (avg, avg), label=f"Average %.2f 1/px" % avg)
     ax.legend()
     fig.savefig(f'graphs/graph {filename}.jpg')  # save the figure to file
     plt.close(fig)

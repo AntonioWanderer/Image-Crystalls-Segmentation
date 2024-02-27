@@ -5,5 +5,5 @@ if __name__ == "__main__":
         fname = filename[:filename.index(".")]
         img, gray = Methods.load_im(filename)
         df, avg, N = Methods.processing(img, gray, filename)
-        Methods.graphics(fname, sorted(df[Config.columns[2]], reverse=True), avg, N)
+        Methods.graphics(fname, df, avg, N)
         Methods.createTable(fname+".xlsx", df)

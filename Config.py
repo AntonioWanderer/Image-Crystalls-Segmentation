@@ -1,4 +1,4 @@
-split_level = 20
+split_level = 1000
 scale = 300 / (14756 - 12964)
 thresholdLevel = 2 ** 7 - 1
 pixelMax = 255
